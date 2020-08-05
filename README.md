@@ -1,7 +1,7 @@
 # Material-UI Snackbar Provider
 
 Used <a href="https://github.com/TeamWertarbyte/material-ui-snackbar-provider">material-ui-snackbar-provider</a>
-Libary and made some better lokking snack bar to Use with react and Nextjs
+Libary and made some better looking snack bar with Material-ui-Alert to Use with react and Nextjs
 
 ## Installation
 
@@ -33,13 +33,11 @@ export default function MyComponent (props) {
   const snackbar = useSnackbar()
 
   const handleSomething = () => {
-    snackbar.showMessage(
       snackbar.showMessage(
         "This is the Massage",
         "error",
         "filled",
       );
-    )
   }
 
   const handleUndo = () => {
