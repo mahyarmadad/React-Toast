@@ -1,32 +1,32 @@
 # Material-UI Snackbar Provider
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![Build Status](https://travis-ci.org/TeamWertarbyte/material-ui-snackbar-provider.svg)](https://travis-ci.org/TeamWertarbyte/material-ui-snackbar-provider)
-[![Coverage Status](https://coveralls.io/repos/github/TeamWertarbyte/material-ui-snackbar-provider/badge.svg?branch=master)](https://coveralls.io/github/TeamWertarbyte/material-ui-snackbar-provider?branch=master)
 
-A convenient way to use [material-ui][]'s snackbars.
+Used <a href="https://github.com/TeamWertarbyte/material-ui-snackbar-provider">material-ui-snackbar-provider</a>
+Libary and made some better lokking snack bar to Use with react and Nextjs
 
 ## Installation
+
 ```shell
-npm i --save material-ui-snackbar-provider
+npm i --save react-toast
 ```
 
 ## Usage
+
 Simply wrap all components that should display snackbars with the `SnackbarProvider` component,
 e.g. by wrapping your router with it.
 
 ```js
-import { SnackbarProvider } from 'material-ui-snackbar-provider'
+import { SnackbarProvider } from "react-toast";
 
 // somewhere at the root of your app
 <SnackbarProvider SnackbarProps={{ autoHideDuration: 4000 }}>
   {/* the rest of your app belongs here, e.g. the router */}
-</SnackbarProvider>
+</SnackbarProvider>;
 ```
 
 You can then display messages with the `useSnackbar` hook. More examples [can be found here](https://github.com/TeamWertarbyte/material-ui-snackbar-provider/tree/master/stories).
 
 ```js
-import { useSnackbar } from 'material-ui-snackbar-provider'
+import { useSnackbar } from 'react-toast'
 
 export default function MyComponent (props) {
   const snackbar = useSnackbar()
@@ -51,35 +51,37 @@ export default function MyComponent (props) {
 If you're not using React ^16.8.0 and our you can't use hooks (e.g. in a class component), you can use the `withSnackbar` HOC and the injected `snackbar` prop instead.
 
 ```js
-import { withSnackbar } from 'material-ui-snackbar-provider'
+import { withSnackbar } from "react-toast";
 
 class MyComponent {
   // *snip*
 
-  handleSomething () {
-    this.props.snackbar.showMessage(
-      'Something happened!',
-      'Undo', () => this.handleUndo())
+  handleSomething() {
+    this.props.snackbar.showMessage("Something happened!", "Undo", () =>
+      this.handleUndo()
+    );
   }
 
-  handleUndo () {
+  handleUndo() {
     // *snip*
   }
 }
 
-export default withSnackbar()(MyComponent) // export the wrapped component
+export default withSnackbar()(MyComponent); // export the wrapped component
 ```
 
 ### Snackbar variants
+
 Snackbar variants (i.e. diffent styles for different types of messages) can be implemented using the `Alert` component from `@material-ui/lab`. An example that also adds a custom hook to display snackbars with different severities is available [here](https://github.com/TeamWertarbyte/material-ui-snackbar-provider/tree/master/stories/1-custom.stories.js).
 
 ### SnackbarProvider Props
-|Name            |Type        |Default     |Description
-|----------------|------------|------------|--------------------------------
-|ButtonProps|`object`||Props to pass through to the action [button][mui-button].
-|children|`node`||The children that are wrapped by this provider.
-|SnackbarComponent|`ReactElement`||Custom snackbar component.
-|SnackbarProps|`object`||Props to pass through to the [snackbar][mui-snackbar].
+
+| Name              | Type           | Default | Description                                               |
+| ----------------- | -------------- | ------- | --------------------------------------------------------- |
+| ButtonProps       | `object`       |         | Props to pass through to the action [button][mui-button]. |
+| children          | `node`         |         | The children that are wrapped by this provider.           |
+| SnackbarComponent | `ReactElement` |         | Custom snackbar component.                                |
+| SnackbarProps     | `object`       |         | Props to pass through to the [snackbar][mui-snackbar].    |
 
 \* required property
 
@@ -87,13 +89,16 @@ Snackbar variants (i.e. diffent styles for different types of messages) can be i
 [mui-snackbar]: https://material-ui.com/api/snackbar/
 
 ### Snackbar methods
+
 `snackbar.showMessage(message, [action, handler, customParameters])`
-* `message` (string) – message to display
-* `action` (string, _optional_) – label for the action button
-* `handler` (function, _optional_) – click handler for the action button
-* `customParameters` (any, _optional_) - custom parameters that will be passed to the snackbar renderer
+
+- `message` (string) – message to display
+- `action` (string, _optional_) – label for the action button
+- `handler` (function, _optional_) – click handler for the action button
+- `customParameters` (any, _optional_) - custom parameters that will be passed to the snackbar renderer
 
 ## Concerns
+
 > Dude, this is not pretty React-like, I don't want to call a function to do something that changes the UI! I want to display a snackbar based on the state only, e.g. by using Redux.
 
 I agree. And if it wouldn't be an absolute pain to do that if you intend to display more than one snackbar, this package wouldn't even exist. The thing is that most of the time, snackbars are displayed when state _changes_ and not really depend on the _state_ itself.
