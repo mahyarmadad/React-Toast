@@ -56,18 +56,18 @@ export default class SnackbarProvider extends PureComponent {
    */
   showMessage = (
     message,
+    type,
+    variant,
     action,
     handleAction,
-    customParameters,
-    type,
-    variant
+    customParameters
   ) => {
     this.setState({
       open: true,
       message,
-      action,
       variant,
       type,
+      action,
       handleAction,
       customParameters,
     });
@@ -86,10 +86,10 @@ export default class SnackbarProvider extends PureComponent {
     const {
       action,
       message,
-      open,
-      customParameters,
       type,
       variant,
+      open,
+      customParameters,
     } = this.state;
 
     const {
@@ -106,9 +106,9 @@ export default class SnackbarProvider extends PureComponent {
         </SnackbarContext.Provider>
         <SnackbarComponent
           message={message}
-          action={action}
           type={type}
           variant={variant}
+          action={action}
           ButtonProps={{ ...ButtonProps, onClick: this.handleActionClick }}
           SnackbarProps={{ ...SnackbarProps, open, onClose: this.handleClose }}
           customParameters={customParameters}

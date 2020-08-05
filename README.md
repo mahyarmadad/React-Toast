@@ -6,7 +6,7 @@ Libary and made some better lokking snack bar to Use with react and Nextjs
 ## Installation
 
 ```shell
-npm i --save react-toast
+npm i nextjs-toast
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ Simply wrap all components that should display snackbars with the `SnackbarProvi
 e.g. by wrapping your router with it.
 
 ```js
-import { SnackbarProvider } from "react-toast";
+import { SnackbarProvider } from "nextjs-toast";
 
 // somewhere at the root of your app
 <SnackbarProvider SnackbarProps={{ autoHideDuration: 4000 }}>
@@ -26,7 +26,7 @@ import { SnackbarProvider } from "react-toast";
 You can then display messages with the `useSnackbar` hook. More examples [can be found here](https://github.com/TeamWertarbyte/material-ui-snackbar-provider/tree/master/stories).
 
 ```js
-import { useSnackbar } from 'react-toast'
+import { useSnackbar } from 'nextjs-toast'
 
 export default function MyComponent (props) {
   const snackbar = useSnackbar()
@@ -51,7 +51,7 @@ export default function MyComponent (props) {
 If you're not using React ^16.8.0 and our you can't use hooks (e.g. in a class component), you can use the `withSnackbar` HOC and the injected `snackbar` prop instead.
 
 ```js
-import { withSnackbar } from "react-toast";
+import { withSnackbar } from "nextjs-toast";
 
 class MyComponent {
   // *snip*

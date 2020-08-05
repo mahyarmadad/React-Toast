@@ -10,11 +10,11 @@ export interface SnackbarProviderValue {
    */
   showMessage(
     message: string,
+    type: string,
+    variant: string,
     action?: string,
     handleAction?: () => void,
-    customParameters?: any,
-    type: string,
-    variant: string
+    customParameters?: any
   );
 }
 
