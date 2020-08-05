@@ -23,7 +23,8 @@ import { SnackbarProvider } from "nextjs-toast";
 </SnackbarProvider>;
 ```
 
-You can then display messages with the `useSnackbar` hook. More examples [can be found here](https://github.com/TeamWertarbyte/material-ui-snackbar-provider/tree/master/stories).
+You can then display messages with the `useSnackbar` hook.
+and gave it a Type and Variant like <a href="https://material-ui.com/components/alert/">Material-ui-Alert</a>
 
 ```js
 import { useSnackbar } from 'nextjs-toast'
@@ -33,8 +34,11 @@ export default function MyComponent (props) {
 
   const handleSomething = () => {
     snackbar.showMessage(
-      'Something happened!',
-      'Undo', () => handleUndo()
+      snackbar.showMessage(
+        "This is the Massage",
+        "error",
+        "filled",
+      );
     )
   }
 

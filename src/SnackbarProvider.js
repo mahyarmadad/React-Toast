@@ -7,15 +7,16 @@ import Alert from "@material-ui/lab/Alert";
 
 function DefaultSnackbar({
   message,
+  type,
+  variant,
   action,
   ButtonProps,
   SnackbarProps,
   customParameters,
-  type,
-  variant,
 }) {
   return (
     <Snackbar
+      {...SnackbarProps}
       action={
         action != null && (
           <Button color="secondary" size="small" {...ButtonProps}>
@@ -25,7 +26,7 @@ function DefaultSnackbar({
       }
     >
       <Alert severity={type} variant={variant}>
-        message={message || ""}
+        {message || ""}
       </Alert>
     </Snackbar>
   );
@@ -65,8 +66,8 @@ export default class SnackbarProvider extends PureComponent {
     this.setState({
       open: true,
       message,
-      variant,
       type,
+      variant,
       action,
       handleAction,
       customParameters,
